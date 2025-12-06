@@ -11,7 +11,7 @@ const Header: React.FC = () => {
             <Link to="/" className="flex items-center space-x-2">
               <Code className="h-8 w-8 text-primary" />
               <span className="text-xl font-semibold text-on-surface">
-                CyberBlog
+                NubleNews
               </span>
             </Link>
             <nav className="hidden md:flex items-center space-x-2">
