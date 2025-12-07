@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-surface-100 border-t border-surface-200 mt-auto">
-      <div className="container mx-auto px-4 py-6 text-center text-on-surface-variant">
-        <p className="text-sm">
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <p className={styles.textSm}>
           &copy; {new Date().getFullYear()} NubleNews. All rights reserved.
         </p>
       </div>

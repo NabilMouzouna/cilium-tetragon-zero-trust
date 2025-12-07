@@ -1,0 +1,59 @@
+/* Global styles for the application */
+
+:root {
+  /* Professional Minimalist Light Theme */
+  --color-primary: #007bff; /* A professional blue */
+  --color-primary-90: rgba(0, 123, 255, 0.9);
+  --color-primary-80: rgba(0, 123, 255, 0.8);
+  --color-primary-10: rgba(0, 123, 255, 0.1);
+
+  --color-background: #f8f9fa; /* Very light gray background */
+  --color-surface-100: #e9ecef; /* Light gray surface */
+  --color-surface-200: #dee2e6; /* Medium light gray surface */
+  --color-white: #ffffff;
+
+  --color-on-primary: #ffffff; /* White text on primary background */
+  --color-on-surface: #212529; /* Dark, soft black text on light background */
+  --color-on-surface-variant: #6c757d; /* Muted medium gray text */
+
+  /* Semantic colors (red for errors, etc.) */
+  --color-red-500: #dc3545;
+  --color-red-600: #c82333;
+
+  /* Font family */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  line-height: 1.6; /* Slightly more relaxed line height */
+  margin: 0;
+}
+
+/* Basic reset/normalize-like styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin from elements */
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Set default font styles for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600; /* Slightly less bold than extrabold, more professional */
+  line-height: 1.2;
+  color: var(--color-on-surface); /* Ensure headings use the main on-surface color */
+}
+
+h1 { font-size: 2.5em; margin-bottom: 0.5em; } /* Slightly larger headings */
+h2 { font-size: 2em; margin-bottom: 0.4em; }
+h3 { font-size: 1.75em; margin-bottom: 0.3em; }
+h4 { font-size: 1.5em; margin-bottom: 0.2em; }
+h5 { font-size: 1.25em; margin-bottom: 0.1em; }
+h6 { font-size: 1em; }
+
+p { margin-bottom: 1em; } /* Add some bottom margin to paragraphs for readability */

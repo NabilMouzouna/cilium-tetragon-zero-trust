@@ -1,0 +1,207 @@
+/* News.module.css */
+
+/* --- Loading State --- */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 24rem; /* h-96 */
+}
+
+.loaderIcon {
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  animation: spin 1s linear infinite; /* animate-spin */
+  color: var(--color-primary);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin-top: 1rem; /* mt-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-on-surface-variant);
+}
+
+/* --- Error State --- */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 24rem; /* h-96 */
+  background-color: var(--color-surface-200);
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.errorIcon {
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  color: var(--color-red-500);
+}
+
+.errorText {
+  margin-top: 1rem; /* mt-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-red-600);
+  font-weight: 600; /* font-semibold */
+}
+
+/* --- Main Content --- */
+.newsPageContainer {
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem; /* py-10 */
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 3rem; /* mb-12 */
+}
+
+.pageTitle {
+  font-size: 2.5em; /* Adjusted for consistency with new H1 in index.module.css */
+  font-weight: 600; /* Adjusted for consistency */
+  color: var(--color-on-surface);
+}
+
+.pageSubtitle {
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-on-surface-variant);
+  margin-top: 0.5rem; /* mt-2 */
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+  gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .postsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .postsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
+  }
+}
+
+.postCard {
+  background-color: var(--color-white); /* Use white for card background */
+  border-radius: 0.5rem; /* rounded-lg */
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Softer shadow */
+}
+
+.postCardHover { /* Corresponds to whileHover={{ y: -5, boxShadow: '...' }} */
+  transform: translateY(-0.3125rem); /* Equivalent to y: -5 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Slightly more pronounced hover shadow */
+}
+
+
+.postContent {
+  padding: 1.5rem; /* p-6 */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.postMetaTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+/* --- Category Spans --- */
+.categoryBase {
+  display: inline-block;
+  padding: 0.25rem 0.75rem; /* py-1 px-3 */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600; /* font-semibold */
+  border-radius: 9999px; /* rounded-full */
+  text-transform: uppercase;
+}
+
+.categoryDevSecOps {
+  background-color: var(--color-surface-200); /* light gray */
+  color: var(--color-on-surface); /* dark text */
+}
+
+.categoryCybersecurity {
+  background-color: var(--color-surface-200); /* light gray */
+  color: var(--color-on-surface); /* dark text */
+}
+
+.categoryDevOps {
+  background-color: var(--color-surface-200); /* light gray */
+  color: var(--color-on-surface); /* dark text */
+}
+
+.categorySoftwareEngineering {
+  background-color: var(--color-surface-200); /* light gray */
+  color: var(--color-on-surface); /* dark text */
+}
+
+.categoryDefault {
+  background-color: var(--color-surface-200); /* light gray */
+  color: var(--color-on-surface); /* dark text */
+}
+
+.postDate {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--color-on-surface-variant);
+}
+
+.postTitle {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: var(--color-on-surface);
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.postTitle a { /* Remove underline from article titles */
+  text-decoration: none;
+}
+
+.postLinkHover { /* Corresponds to hover:text-primary transition-colors duration-200 */
+  color: var(--color-primary);
+  transition: color 200ms ease;
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.postLinkHover:hover {
+  color: var(--color-primary-80);
+}
+
+.postDescription {
+  color: var(--color-on-surface-variant);
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.5; /* leading-relaxed */
+  flex-grow: 1;
+}
+
+.readMoreContainer {
+  margin-top: 1rem; /* mt-4 */
+}
+
+.readMoreLink {
+  font-weight: 600; /* font-semibold */
+  color: var(--color-primary);
+  transition: color 200ms ease; /* transition-colors duration-200 */
+  text-decoration: none; /* Remove underline from Link */
+}
+
+.readMoreLink:hover {
+  color: var(--color-primary-80);
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Newspaper, ShieldCheck } from 'lucide-react';
+import styles from './Home.module.css';
 
 const HomePage: React.FC = () => {
   const featuredPosts = [
@@ -29,12 +30,12 @@ const HomePage: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <div className="text-center py-16 md:py-24">
+      <div className={styles.heroSection}>
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-extrabold text-on-surface mb-4"
+          className={styles.heroTitle}
         >
           Insights for the Modern Developer
         </motion.h1>
@@ -42,7 +43,7 @@ const HomePage: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-on-surface-variant max-w-3xl mx-auto mb-8"
+          className={styles.heroDescription}
         >
           Exploring the frontiers of Cybersecurity, DevOps, and Software Engineering.
           Stay ahead of the curve with expert analysis and practical guides.
@@ -54,39 +55,39 @@ const HomePage: React.FC = () => {
         >
           <Link
             to="/news"
-            className="inline-flex items-center px-8 py-3 bg-primary text-on-primary text-lg font-semibold rounded-md shadow-lg hover:bg-primary/90 transition-colors duration-300"
+            className={styles.exploreButton}
           >
             Explore Articles
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className={styles.exploreButtonIcon} />
           </Link>
         </motion.div>
       </div>
 
       {/* Featured Posts Section */}
-      <div className="py-16 md:py-24 bg-surface-200/50 rounded-lg">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-on-surface text-center mb-12">
+      <div className={styles.featuredPostsSection}>
+        <div className={styles.featuredPostsContainer}>
+          <h2 className={styles.featuredPostsTitle}>
             Featured Articles
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={styles.postsGrid}>
             {featuredPosts.map((post) => (
               <motion.div
                 key={post.slug}
                 whileHover={{ y: -5 }}
-                className="bg-surface-100 rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl"
+                className={styles.postCard}
               >
-                <Link to={`/news/${post.slug}`} className="block p-6">
-                  <div className="flex items-center mb-4">
+                <Link to={`/news/${post.slug}`} className={styles.postLink}>
+                  <div className={styles.postMeta}>
                     {post.category === 'DevSecOps' ? (
-                      <ShieldCheck className="h-6 w-6 text-primary mr-3" />
+                      <ShieldCheck className={styles.postCategoryIcon} />
                     ) : (
-                      <Newspaper className="h-6 w-6 text-primary mr-3" />
+                      <Newspaper className={styles.postCategoryIcon} />
                     )}
-                    <span className="text-sm font-semibold text-primary uppercase">
+                    <span className={styles.postCategory}>
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-on-surface mb-2">
+                  <h3 className={styles.postTitle}>
                     {post.title}
                   </h3>
                 </Link>

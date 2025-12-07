@@ -1,0 +1,141 @@
+/* Header.module.css */
+
+.header {
+  background-color: var(--color-white); /* Keep white for crisp header */
+  border-bottom: 1px solid var(--color-surface-200);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1280px; /* Consistent container max-width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem; /* h-16 (16 * 0.25rem = 4rem) */
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* space-x-6 (6 * 0.25rem = 1.5rem) */
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+  text-decoration: none;
+}
+
+.brandIcon {
+  height: 2rem; /* h-8 */
+  width: 2rem; /* w-8 */
+  color: var(--color-primary);
+}
+
+.brandName {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: var(--color-on-surface);
+}
+
+.navbarNav {
+  display: none; /* hidden */
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .navbarNav {
+    display: flex;
+  }
+}
+
+.navLink {
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  transition: all 0.2s ease-in-out;
+  color: var(--color-on-surface-variant);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background-color: var(--color-surface-200);
+}
+
+.navLinkActive {
+  background-color: var(--color-primary-10);
+  color: var(--color-primary);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space-x-4 */
+}
+
+.searchContainer {
+  position: relative;
+  display: none; /* hidden */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .searchContainer {
+    display: block;
+  }
+}
+
+.searchInput {
+  background-color: var(--color-surface-200);
+  border: 1px solid var(--color-surface-200);
+  border-radius: 0.375rem; /* rounded-md */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  width: 16rem; /* w-64 */
+  outline: none;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 0 2px var(--color-primary-80); /* focus:ring-2 with new primary color */
+}
+
+.searchIcon {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  color: var(--color-on-surface-variant);
+  position: absolute;
+  top: 50%;
+  right: 0.75rem; /* right-3 */
+  transform: translateY(-50%);
+}
+
+.userButton {
+  padding: 0.5rem; /* p-2 */
+  border-radius: 9999px; /* rounded-full */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.userButton:hover {
+  background-color: var(--color-surface-200);
+}
+
+.userIcon {
+  height: 1.5rem; /* h-6 */
+  width: 1.5rem; /* w-6 */
+  color: var(--color-on-surface-variant);
+}

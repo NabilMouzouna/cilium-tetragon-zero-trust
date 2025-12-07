@@ -1,0 +1,275 @@
+/* Post.module.css */
+
+/* --- Loading State (re-using from News.module.css) --- */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 24rem; /* h-96 */
+}
+
+.loaderIcon {
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  animation: spin 1s linear infinite; /* animate-spin */
+  color: var(--color-primary);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin-top: 1rem; /* mt-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-on-surface-variant);
+}
+
+/* --- Error State (re-using from News.module.css) --- */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 24rem; /* h-96 */
+  background-color: var(--color-surface-200);
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.errorIcon {
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  color: var(--color-red-500);
+}
+
+.errorText {
+  margin-top: 1rem; /* mt-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-red-600);
+  font-weight: 600; /* font-semibold */
+}
+
+.backToNewsButton {
+  margin-top: 1.5rem; /* mt-6 */
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: 0.375rem; /* rounded-md */
+  transition: background-color 200ms ease; /* hover:bg-primary/90 */
+  text-decoration: none;
+}
+
+.backToNewsButton:hover {
+  background-color: var(--color-primary-80);
+}
+
+.backToNewsButtonIcon {
+  margin-right: 0.5rem; /* mr-2 */
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
+}
+
+/* --- Main Content --- */
+.postPageContainer {
+  max-width: 56rem; /* max-w-4xl (adjust as needed based on desired look) */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem; /* py-10 */
+}
+
+.topBackToNews {
+  margin-bottom: 2rem; /* mb-8 */
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary);
+  transition: color 200ms ease;
+  text-decoration: none;
+}
+
+.topBackToNews:hover {
+  color: var(--color-primary-80);
+}
+
+.topBackToNewsIcon {
+  margin-right: 0.5rem; /* mr-2 */
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
+}
+
+.postContentCard {
+  background-color: var(--color-white); /* Use white for card background */
+  padding: 2rem; /* p-8 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Softer shadow */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .postContentCard {
+    padding: 3rem; /* p-12 */
+  }
+}
+
+.postHeader {
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+.categoryBase { /* Re-using from News.module.css */
+  display: inline-block;
+  padding: 0.25rem 0.75rem; /* py-1 px-3 */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600; /* font-semibold */
+  border-radius: 9999px; /* rounded-full */
+  text-transform: uppercase;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.categoryDevSecOps {
+  background-color: var(--color-surface-200);
+  color: var(--color-on-surface);
+}
+
+.categoryCybersecurity {
+  background-color: var(--color-surface-200);
+  color: var(--color-on-surface);
+}
+
+.categoryDevOps {
+  background-color: var(--color-surface-200);
+  color: var(--color-on-surface);
+}
+
+.categorySoftwareEngineering {
+  background-color: var(--color-surface-200);
+  color: var(--color-on-surface);
+}
+
+.categoryDefault {
+  background-color: var(--color-surface-200);
+  color: var(--color-on-surface);
+}
+
+.postTitle {
+  font-size: 2.5em; /* Adjusted to new H1 sizing in index.module.css */
+  font-weight: 600; /* Adjusted to new H1 sizing in index.module.css */
+  color: var(--color-on-surface);
+  margin-bottom: 0.75rem; /* mb-3 */
+  text-decoration: none; /* Removed underline */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .postTitle {
+    font-size: 3em; /* Adjusted for consistency, slightly smaller than global H1 */
+  }
+}
+
+.postMeta {
+  color: var(--color-on-surface-variant);
+}
+
+/* --- Article Content (Prose replacement) --- */
+.articleContent {
+  max-width: none; /* max-w-none */
+  color: var(--color-on-surface); /* text-on-surface */
+  line-height: 1.75; /* Default line-height for prose */
+}
+
+.articleContent h1,
+.articleContent h2,
+.articleContent h3,
+.articleContent h4,
+.articleContent h5,
+.articleContent h6 {
+  color: var(--color-on-surface); /* prose-headings:text-on-surface */
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.articleContent h1 { font-size: 2.25em; }
+.articleContent h2 { font-size: 1.875em; }
+.articleContent h3 { font-size: 1.5em; }
+.articleContent h4 { font-size: 1.25em; }
+
+.articleContent a {
+  color: var(--color-primary); /* prose-a:text-primary */
+  text-decoration: none; /* Remove underline by default */
+  transition: color 200ms ease;
+}
+
+.articleContent a:hover {
+  color: var(--color-primary-80); /* hover:prose-a:text-primary/80 */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.articleContent strong {
+  color: var(--color-on-surface); /* prose-strong:text-on-surface */
+  font-weight: 700;
+}
+
+.articleContent p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.articleContent ul,
+.articleContent ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.75em;
+}
+
+.articleContent ul li {
+  list-style-type: disc;
+}
+
+.articleContent ol li {
+  list-style-type: decimal;
+}
+
+.articleContent li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.articleContent blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--color-surface-200);
+  padding-left: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  color: var(--color-on-surface-variant);
+}
+
+.articleContent pre {
+  background-color: var(--color-surface-200); /* Use theme variable */
+  color: var(--color-on-surface); /* Use theme variable */
+  padding: 1em;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+}
+
+.articleContent code {
+  font-family: monospace;
+  font-size: 0.875em;
+  background-color: var(--color-surface-100); /* Use theme variable */
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.articleContent pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+
