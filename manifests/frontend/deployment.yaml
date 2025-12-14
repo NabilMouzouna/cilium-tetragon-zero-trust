@@ -16,12 +16,25 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: nublenews-frontend:latest
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 80
-          env:
-            - name: VITE_BACKEND_URL
-              value: "http://backend:3001"
-
+      - name: frontend
+        image: nublenews-frontend:dev
+        ports:
+        - containerPort: 5173
+        env:
+        - name: VITE_BACKEND_URL
+          value: "http://backend:3001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: nublenews
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 5173
+    targetPort: 5173
+    nodePort: 30080
+  type: NodePort
