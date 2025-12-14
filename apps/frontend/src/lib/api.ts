@@ -1,6 +1,5 @@
 import type { Post } from './types';
-
-const API_BASE_URL = 'http://localhost:3001/api';
+import { API_BASE_URL } from '../../constants';
 
 export const fetchPosts = async (): Promise<Post[]> => {
   const response = await fetch(`${API_BASE_URL}/posts`);
