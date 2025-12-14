@@ -1,0 +1,14 @@
+{
+  "spec": {
+    "template": {
+      "spec": {
+        "containers": [
+          {
+            "name": "kube-proxy",
+            "command": ["/usr/local/bin/kube-proxy", "--proxy-mode=none"]
+          }
+        ]
+      }
+    }
+  }
+}
