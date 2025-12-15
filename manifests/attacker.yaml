@@ -1,0 +1,13 @@
+# attacker.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: attacker
+  namespace: nublenews
+  labels:
+    app: attacker # A unique label
+spec:
+  containers:
+  - name: attacker
+    image: curlimages/curl:latest # A simple container with curl
+    command: ["sleep", "3600"]

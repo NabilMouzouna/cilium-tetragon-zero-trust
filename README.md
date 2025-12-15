@@ -3,13 +3,44 @@ This guide documents the full journey of setting up a Kubernetes cluster with Ci
 
 -----
 
-## 1\. Setup WSL2 and Docker
+## Setup WSL2 and Docker
 
-*(... steps omitted for brevity ...)*
+
+
+  * Installed WSL2 with Ubuntu:
+
+      \`\`\`powershell
+
+      wsl --install
+
+
+<!-- end list -->
+
+
+````
+
+* Verified WSL2 installation:
+
+  ```powershell
+
+  wsl -l -v
+
+  ```
+
+* Installed Docker Desktop, verified with:
+
+  ```powershell
+
+  docker run hello-world
+
+  ```
+
+
+--- 
 
 -----
 
-## 5\. Load Docker Images and Deploy Application
+## Load Docker Images and Deploy Application
 
   * Load images:
       ` powershell   kind load docker-image nublenews-backend:dev --name zero-trust-k8s   kind load docker-image nublenews-frontend:dev --name zero-trust-k8s    `
@@ -20,10 +51,108 @@ This guide documents the full journey of setting up a Kubernetes cluster with Ci
 
 -----
 
-## 6\. Install Cilium Tetragon for Runtime Visibility
+ * **Install Cilium CNI and Hubble (PowerShell):**
 
-*(... steps omitted for brevity ...)*
 
+    ```powershell
+
+    helm repo add cilium https://helm.cilium.io/
+
+    helm repo update
+
+    helm install cilium cilium/cilium --version 1.18.4 `
+
+      --namespace kube-system `
+
+      --set image.pullPolicy=IfNotPresent `
+
+      --set ipam.mode=kubernetes `
+
+      --set hubble.enabled=true `
+
+      --set hubble.relay.enabled=true `
+
+      --set hubble.ui.enabled=true `
+
+      --set kubeProxyReplacement=true `
+
+      --skip-crds
+
+    ```
+
+* **Verify CNI Installation:** Wait until the node is Ready.
+
+    ```powershell
+
+    kubectl wait --for=condition=Ready nodes --all --timeout=300s
+
+    ```
+
+----
+--- 
+ ## Install Cilium Tetragon for Runtime Visibility
+
+
+This installs the agent that monitors application behavior at the kernel level using eBPF.
+
+
+* **Install Tetragon Agent (PowerShell):**
+
+
+    ```powershell
+
+    helm repo update
+
+    helm install tetragon cilium/tetragon --version 1.6.0 -n kube-system
+
+    kubectl rollout status -n kube-system ds/tetragon -w
+
+    ```
+
+
+* **Install `tetra` CLI (Manual Download Recommended):**
+
+    * Manually download `tetra-windows-amd64.tar.gz` from the [Cilium Tetragon releases page](https://github.com/cilium/tetragon/releases).
+
+    * Extract the `tetra.exe` binary.
+
+    * Move `tetra.exe` to a directory on your PATH (e.g., `C:\tetragon`).
+
+    * **Restart PowerShell** to load the updated PATH.
+
+
+* **Verify Runtime Visibility (Successful Connection Check):**
+
+    1.  **Terminal 1 (Port Forward):** Set up the port bridge (using port 54500 to avoid conflicts):
+
+        ```powershell
+
+        kubectl port-forward tetragon-d4k46 -n kube-system 54500:54321
+
+        ```
+
+    2.  **Terminal 2 (Monitor):** Stream events successfully:
+
+        ```powershell
+
+        C:\tetragon\tetra.exe getevents -n nublenews --server-address 127.0.0.1:54500
+
+        ```
+
+    3.  **Terminal 3 (Executor):** Generate test events:
+
+        ```powershell
+
+        $POD_NAME = (kubectl get pods -n nublenews -l app=frontend -o jsonpath='{.items[0].metadata.name}')
+
+        kubectl exec -n nublenews $POD_NAME -- cat /etc/hosts
+
+        ```
+
+        *(Verification: Events appeared in Terminal 2)*
+
+
+--- 
 -----
 
 ## 7\. Zero Trust Network Enforcement (L3, L4, & L7)
